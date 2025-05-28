@@ -11,7 +11,6 @@ public class GameController{
     public void startGame()
     {
         JFrame frame = new JFrame();
-
         frame.setSize(1600, 1000);
         frame.setTitle("CougarGuessr");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
