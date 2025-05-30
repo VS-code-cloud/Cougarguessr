@@ -5,7 +5,7 @@ public class ImagePanel extends JPanel
 {
     public ImagePanel()
     {
-        this.setBackground(Color.BLUE);
-        setPreferredSize(new Dimension(100, 300));
+        this.setBackground(Color.ORANGE);
+        setPreferredSize(new Dimension(1600, 100));
     }
 }
