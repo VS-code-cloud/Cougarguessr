@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -23,16 +24,15 @@ public class GameController{
         //frame.setLayout(new BorderLayout());
         frame.add(ip/*, BorderLayout.NORTH*/);
         frame.add(mp/*, BorderLayout.CENTER*/);
-        JButton b = new JButton("Start Game");
-        b.setBounds(50,600,200,100);
-        b.addActionListener(new ActionListener() {
+        JButton startButton = new JButton("<html>Start<br/>Game</html>");
+        startButton.setFont(new Font("Arial", Font.PLAIN, 40));
+        startButton.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Game started");
             }
         });
-        frame.add(b);
-
+        frame.add(startButton);
     }
 }
