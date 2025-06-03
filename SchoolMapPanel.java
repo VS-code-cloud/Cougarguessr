@@ -1,5 +1,5 @@
-import java.awt.*;
-import javax.swing.JPanel;
+import java.awt.Color;
+import javax.swing.JPanel;      
 
 public class SchoolMapPanel extends JPanel
 {
