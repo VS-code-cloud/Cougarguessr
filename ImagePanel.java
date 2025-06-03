@@ -1,11 +1,21 @@
 import java.awt.*;
-import javax.swing.JPanel;
+import javax.swing.*;
 
-public class ImagePanel extends JPanel
-{
+public class ImagePanel extends JPanel {
+    private Image image;
+
+    /*public void setImage(String imagePath) {
+        image = new ImageIcon(imagePath).getImage();
+        repaint();
+    }*/
     public ImagePanel()
     {
         this.setBackground(Color.ORANGE);
-        setPreferredSize(new Dimension(1600, 100));
+    }
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        if (image != null)
+            g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
     }
 }
