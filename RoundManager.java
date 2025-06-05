@@ -9,9 +9,9 @@ public class RoundManager {
         currentIndex = 0;
 
         // TODO: ADD LOCATIONS
-        locations.add(new LocationPoint(100, 200, "bottom", "images/hallway.jpg"));
-        locations.add(new LocationPoint(250, 300, "top", "images/gym.jpg"));
-        locations.add(new LocationPoint(400, 100, "bottom", "images/library.jpg"));
+        locations.add(new LocationPoint(100, 200, "bottom", "cougarguessr-photo/i1.jpeg"));
+        locations.add(new LocationPoint(250, 300, "bottom", "cougarguessr-photo/i2.jpeg"));
+        locations.add(new LocationPoint(400, 100, "bottom", "cougarguessr-photo/i3.jpeg"));
 
         Collections.shuffle(locations); 
     }
