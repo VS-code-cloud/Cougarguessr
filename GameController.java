@@ -12,27 +12,20 @@ public class GameController {
     private SchoolMapPanel mp1;
     private RoundManager roundManager;
 
-    public GameController() {
-        // No special setup in constructor yet
-    }
-
     public void startGame() {
-        // ✅ Use class variables — no shadowing!
         frame = new JFrame();
         startScreen = new JPanel();
 
-        frame.setSize(1600, 1000);
+        frame.setSize(1900, 1075);
         frame.setTitle("CougarGuessr");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(null); // Manual layout
+        frame.setLayout(null);
 
-        // Initialize panels
         ip = new ImagePanel();
         SchoolMapPanel mp0 = new SchoolMapPanel(0);
         SchoolMapPanel mp1 = new SchoolMapPanel(1);
-        roundManager = new RoundManager(); // unused for now
+        roundManager = new RoundManager();
 
-        // Setup start screen
         startScreen.setLayout(null);
         startScreen.setBounds(0, 0, 1600, 1000);
 
@@ -45,20 +38,17 @@ public class GameController {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Game started");
 
-                // Remove the start screen
                 frame.remove(startScreen);
-
-                // Set bounds for game components
-                ip.setBounds(50, 400, 600, 400);      // Image on left
-                mp0.setBounds(700, 300, 375, 500);    // Bottom floor map
-                mp1.setBounds(1100, 300, 375, 500);   // Top floor map
-
-                // Add game components
+                JTextArea topText = new JTextArea("CougarGuessr - Click the maps on the right to guess where you are!", 100, 100);
+                ip.setBounds(0, 500, 600, 400);
+                mp0.setBounds(710, 100, 540, 720);
+                mp1.setBounds(1350, 100, 540, 720);
+                
                 frame.add(ip);
                 frame.add(mp0);
                 frame.add(mp1);
-
-                // Load test image (confirm it's visible)
+                frame.add(topText);
+                
                 ip.setImage("cougarguessr-photo/i1.jpeg");
 
                 frame.revalidate();
@@ -66,13 +56,11 @@ public class GameController {
             }
         });
 
-        // Add button to start screen
         startScreen.add(startButton);
         frame.add(startScreen);
         frame.setVisible(true);
     }
 
-    // Placeholder for future round logic
     public void startNewRound() {
         if (roundManager.hasNextRound()) {
             LocationPoint lp = roundManager.getNextRound();

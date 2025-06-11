@@ -33,7 +33,7 @@ protected void paintComponent(Graphics g) {
     if (image != null) {
         g.setColor(Color.BLACK);
         g.drawString("Drawing image...", 10, 20); // ⬅️ test if paintComponent is even running
-        g.drawImage(image, 0, 0, null); // ⬅️ original size, no scaling
+        g.drawImage(image, 0, 0, this); // ⬅️ original size, no scaling
     } else {
         g.setColor(Color.RED);
         g.drawString("Image is null", 10, 20);
