@@ -3,11 +3,13 @@ import java.util.*;
 public class RoundManager {
     private List<LocationPoint> locations;
     private int currentIndex;
-
+    private int round;
+    private int score;
     public RoundManager() {
         locations = new ArrayList<>();
         currentIndex = 0;
-
+        round=0;
+        score=0;
         /* TODO: ADD LOCATIONS
         locations.add(new LocationPoint(100, 200, "bottom", "cougarguessr-photo/i1.jpeg"));
         locations.add(new LocationPoint(250, 300, "bottom", "cougarguessr-photo/i2.jpeg"));
@@ -27,7 +29,12 @@ public class RoundManager {
         */
         Collections.shuffle(locations); 
     }
-
+    public int getRound() {
+        return round;
+    }
+    public int getScore() {
+        return score;
+    }
     public boolean hasNextRound() {
         return currentIndex < locations.size();
     }

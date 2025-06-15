@@ -11,7 +11,6 @@ public class GameController {
     private SchoolMapPanel mp0;
     private SchoolMapPanel mp1;
     private RoundManager roundManager;
-
     public void startGame() {
         frame = new JFrame();
         startScreen = new JPanel();
@@ -40,10 +39,11 @@ public class GameController {
 
                 frame.remove(startScreen);
                 JTextArea topText = new JTextArea("CougarGuessr - Click the maps on the right to guess where you are!", 100, 100);
+                topText.setEditable(false);
                 ip.setBounds(0, 500, 600, 400);
-                mp0.setBounds(710, 100, 540, 720);
-                mp1.setBounds(1350, 100, 540, 720);
-                
+                mp0.setBounds(650, 100, 540, 720);
+                mp1.setBounds(1250, 100, 540, 720);
+                topText.setBounds(50, 50, 500, 200);
                 frame.add(ip);
                 frame.add(mp0);
                 frame.add(mp1);

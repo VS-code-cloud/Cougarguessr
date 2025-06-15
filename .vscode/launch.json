@@ -7,12 +7,12 @@
         
         {
             "type": "java",
-            "name": "Debug (Launch)-CougarGuessr",
+            "name": "Debug (Launch)-CougarGuessrGame",
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "console": "internalConsole",
             "stopOnEntry": false,
-            "mainClass": "CougarGuessr",
+            "mainClass": "CougarGuessrGame",
             "args": ""
         },
         {
