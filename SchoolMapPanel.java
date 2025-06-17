@@ -20,7 +20,6 @@ public class SchoolMapPanel extends JPanel
             public void mousePressed(MouseEvent e) {
                 int x = e.getX();
                 int y = e.getY();
-                System.out.println("clicked: "+x+","+y);
                 roundManager.updateWithGuess(x, y, floor);
             }
         });
