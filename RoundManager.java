@@ -19,7 +19,7 @@ public class RoundManager {
         locations.add(new LocationPoint(248, 345, 1, "cougarguessr-photo/i28.jpeg"));
         locations.add(new LocationPoint(251, 301, 1, "cougarguessr-photo/i29.jpeg"));
         locations.add(new LocationPoint(250, 266, 1, "cougarguessr-photo/i30.jpeg"));
-        currentIndex = (int) (Math.random()*locations.size());;
+        currentIndex = (int) (Math.random()*locations.size());
         
         gameController = g;
         /* TODO: ADD LOCATIONS
