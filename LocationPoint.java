@@ -1,10 +1,10 @@
 public class LocationPoint {
     private int x;
     private int y;
-    private String floor; 
+    private int floor; 
     private String imagePath;
 
-    public LocationPoint(int x, int y, String floor, String imagePath) {
+    public LocationPoint(int x, int y, int floor, String imagePath) {
         this.x = x;
         this.y = y;
         this.floor = floor;
@@ -19,7 +19,7 @@ public class LocationPoint {
     { 
         return y; 
     }
-    public String getFloor() 
+    public int getFloor() 
     { 
         return floor; 
     }

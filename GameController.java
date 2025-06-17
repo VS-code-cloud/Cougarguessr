@@ -10,7 +10,20 @@ public class GameController {
     private ImagePanel ip;
     private SchoolMapPanel mp0;
     private SchoolMapPanel mp1;
+    Timer timer;
+    boolean ending = false;
     private RoundManager roundManager;
+    JTextArea topText = new JTextArea(
+        """
+        CougarGuessr - Click the maps on the right to guess where you are!
+        Round: 
+        Score: 
+        Time remaining: 30 seconds                          
+        """,
+        100, 
+        100
+    );
+                
     public void startGame() {
         frame = new JFrame();
         startScreen = new JPanel();
@@ -21,9 +34,9 @@ public class GameController {
         frame.setLayout(null);
 
         ip = new ImagePanel();
-        SchoolMapPanel mp0 = new SchoolMapPanel(0);
-        SchoolMapPanel mp1 = new SchoolMapPanel(1);
-        roundManager = new RoundManager();
+        roundManager = new RoundManager(this);
+        SchoolMapPanel mp0 = new SchoolMapPanel(0, roundManager);
+        SchoolMapPanel mp1 = new SchoolMapPanel(1, roundManager);
 
         startScreen.setLayout(null);
         startScreen.setBounds(0, 0, 1600, 1000);
@@ -38,19 +51,17 @@ public class GameController {
                 System.out.println("Game started");
 
                 frame.remove(startScreen);
-                JTextArea topText = new JTextArea("CougarGuessr - Click the maps on the right to guess where you are!", 100, 100);
-                topText.setEditable(false);
                 ip.setBounds(0, 500, 600, 400);
                 mp0.setBounds(650, 100, 540, 720);
                 mp1.setBounds(1250, 100, 540, 720);
+                topText.setEditable(false);
                 topText.setBounds(50, 50, 500, 200);
                 frame.add(ip);
                 frame.add(mp0);
                 frame.add(mp1);
                 frame.add(topText);
-                
                 ip.setImage("cougarguessr-photo/i1.jpeg");
-
+                startNewRound();
                 frame.revalidate();
                 frame.repaint();
             }
@@ -62,12 +73,45 @@ public class GameController {
     }
 
     public void startNewRound() {
-        if (roundManager.hasNextRound()) {
+        if (roundManager.getRound()<=5) {
             LocationPoint lp = roundManager.getNextRound();
             ip.setImage(lp.getImagePath());
+            if (this.timer!=null) {
+                timer.stop();
+            }
+            startTimer(topText);
         } else {
             System.out.println("Game over!");
         }
+    }
+    public void endGame() {
+        ending=true;
+    }
+    public void startTimer(JTextArea topText) {
+        timer = new Timer(1000, new ActionListener() {
+            int count = 31;
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                count--;
+                if (count<=0) {
+                    timer.stop();
+                }
+                topText.setText("""
+                    CougarGuessr - Click the maps on the right to guess where you are!
+                    Round:"""+" "+roundManager.getRound()+"""
+                    
+                    Score:"""+" "+roundManager.getScore()+"""
+                    
+                    Time remaining:"""+" "+count+" "+"""
+                    seconds                          
+                    """);
+                if (ending) {
+                    timer.stop();
+                }
+            }
+        });
+        timer.start();
     }
 }
 
