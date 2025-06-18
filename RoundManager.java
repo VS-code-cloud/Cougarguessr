@@ -19,7 +19,7 @@ public class RoundManager {
         locations.add(new LocationPoint(248, 345, 1, "cougarguessr-photo/i28.jpeg"));
         locations.add(new LocationPoint(251, 301, 1, "cougarguessr-photo/i29.jpeg"));
         locations.add(new LocationPoint(250, 266, 1, "cougarguessr-photo/i30.jpeg"));
-        currentIndex = (int) (Math.random()*locations.size());
+        currentIndex = (int) (Math.random()*locations.size());;
         
         gameController = g;
         /* TODO: ADD LOCATIONS
@@ -58,9 +58,15 @@ public class RoundManager {
     }
     public void updateWithGuess(int x, int y, int floor) {
         if (currLoc.getFloor()!=floor) {
-            score+=Math.sqrt(540*540+720*720);
+            score+=0;
         } else {
-            score+=Math.sqrt(Math.pow(x-currLoc.getX(), 2)+Math.pow(y-currLoc.getY(), 2));
+            int bonus = 100;
+            bonus-= Math.sqrt(Math.pow(x-currLoc.getX(), 2)+Math.pow(y-currLoc.getY(), 2));
+            	if(bonus < 0)
+            	{
+            		bonus = 0;
+            	}
+        	score+=bonus;
         }
         if (round==5) {
             gameController.endGame();
