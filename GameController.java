@@ -18,7 +18,7 @@ public class GameController {
         CougarGuessr - Click the maps on the right to guess where you are!
         Round: 
         Score: 
-        Time remaining: 30 seconds                          
+        Time remaining: 20 seconds                          
         """,
         100, 
         100
@@ -89,13 +89,16 @@ public class GameController {
     }
     public void startTimer(JTextArea topText) {
         timer = new Timer(1000, new ActionListener() {
-            int count = 31;
+            int count = 21;
 
             @Override
             public void actionPerformed(ActionEvent e) {
                 count--;
                 if (count<=0) {
                     timer.stop();
+                    if (roundManager.getRound()<5) {
+                        startNewRound();
+                    } else endGame();
                 }
                 topText.setText("""
                     CougarGuessr - Click the maps on the right to guess where you are!
